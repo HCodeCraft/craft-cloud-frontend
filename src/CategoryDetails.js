@@ -23,14 +23,15 @@ const CategoryDetails = ({ categories }) => {
         <div className="text">
           <h4> {category.description}</h4>
           <br/>
-          <div className='btn'>
+          <div className='sidebtn, btn'>
           <button>Edit Category</button>
+          <button>Delete Category</button>
           </div>
         </div>
         <div className="text">
         <h2>{category.name} Projects</h2>
         </div>
-        {category.crafts.map((craft) => <CraftCard key={craft.id} craft={craft}/>)}
+        {category.crafts.map((craft) => <CraftCard key={craft.id} craft={craft} category={category}/>)}
         
 
         <div className="text">

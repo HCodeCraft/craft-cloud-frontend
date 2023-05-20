@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 
 
 
 
-const CraftCard = ({craft}) => {
+const CraftCard = ({craft, category}) => {
     let hearts;
 
     hearts = (craft !== undefined ?
@@ -32,9 +33,9 @@ const CraftCard = ({craft}) => {
       <br />
 
       <div className="btn">
-        {/* <Link to={`${yarn.id}`}> */}
+        <Link to={`${craft.id}`}>
           <button>Show More</button>
-        {/* </Link> */}
+        </Link>
         <br />
         <br />
       </div>

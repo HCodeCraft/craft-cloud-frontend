@@ -30,7 +30,7 @@ function App() {
         <Route path="/categories" element={<Categories categories={categories}/>} />
         <Route path="/categories/:id" element={<CategoryDetails categories={categories}/>} />
         <Route path="/categories/new" element={<NewCategoryForm />} />
-        <Route path="/crafts/:id" element={<CraftDetails />} />
+        <Route path="/categories/:id/*" element={<CraftDetails categories={categories}/>} />
       </Routes>
     </>
   );

@@ -68,6 +68,16 @@
     background: #DFA67B(27, 156, 252, 0.1);
     transform: scale (1.1);
   }
+
+  .sidebtn{
+    padding: 0rem;
+    background-color: #DFA67B;
+    border: none;
+    transition: 0.2s;
+    margin-bottom: 0.5rem;
+    border-radius: 3px;
+    font-size: large;
+  }
   
   a {
     text-transform: uppercase;

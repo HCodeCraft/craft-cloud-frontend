@@ -28,6 +28,7 @@ const NewCategoryForm = () => {
             description: category.description
           };
 
+
           fetch("http://localhost:9292/categories", {
             method: "POST",
             headers: {
@@ -35,11 +36,14 @@ const NewCategoryForm = () => {
             },
             body: JSON.stringify(newCategory),
           })
-            .then((r) => r.json())
+            .then((responses) => {
+              return Promise.all(responses.map(r => r.json()))
+            })
             .then((data) => {
             // addCategory(data);
             //  showAllYarns();
-              navigate("/categories");
+            console.log("Form submit data", data)
+              // navigate("/categories");
             });
         };
 
