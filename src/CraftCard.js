@@ -8,13 +8,13 @@ import React from 'react'
 const CraftCard = ({craft}) => {
     let hearts;
 
-    hearts = (craft != undefined ?
-    (craft.difficulty == "easy" ? hearts = '💚' :
-    craft.difficulty == "medium" ? hearts = '🧡🧡' :
+    hearts = (craft !== undefined ?
+    (craft.difficulty === "easy" ? hearts = '💚' :
+    craft.difficulty ==="medium" ? hearts = '🧡🧡' :
     hearts = '❤️❤️❤️')
     : null)
 
-    return craft != undefined ? (
+    return craft !== undefined ? (
     <div className="card-container">
     <div className="image-container">
       <img src={craft.image} alt="" />
@@ -39,7 +39,9 @@ const CraftCard = ({craft}) => {
         <br />
       </div>
     </div>
-  </div>) : (<h2>Loading...</h2>)
+
+  </div>
+  ) : (<h2>Loading...</h2>)
 
   
 }

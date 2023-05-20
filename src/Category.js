@@ -6,7 +6,7 @@ const Category = ({ name, image, description, id, category }) => {
   const navigate = useNavigate();
 
 
-  const state = { category };
+  // const state = { category };
   return (
     <div className="card-container">
       <div className="image-container">

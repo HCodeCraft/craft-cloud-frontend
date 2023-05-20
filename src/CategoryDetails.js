@@ -22,6 +22,10 @@ const CategoryDetails = ({ categories }) => {
         <br/>
         <div className="text">
           <h4> {category.description}</h4>
+          <br/>
+          <div className='btn'>
+          <button>Edit Category</button>
+          </div>
         </div>
         <div className="text">
         <h2>{category.name} Projects</h2>
@@ -34,10 +38,15 @@ const CategoryDetails = ({ categories }) => {
         </div>
         <br />
         <br />
-      </div>
+      </div> <h4>Difficulty:</h4><p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p> 
     </div>
   ) : (
-    <h1>Loading...</h1>
+    <>
+    <br />
+    <br/>
+    <br/>
+    <h1 className="title">Loading...</h1>
+    </>
   );
 };
 
