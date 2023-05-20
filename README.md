@@ -1,7 +1,7 @@
 Craft Cloud Front end
 
 
-A web app to help you store and keep track of your craft ideas! Checking commit worked
+A web app to help you store and keep track of your craft ideas! Checking commit worked Checking again if commit worked
 
 
 
