@@ -8,7 +8,7 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
   const category = categories.find((c) => c.id == id);
 
   const handleDeleteClick = () => {
-    fetch('http://localhost:9292/categories', {
+    fetch(`http://localhost:9292/categories/${id}`, {
       method: "DELETE"
     })
     onDeleteCategory(id)

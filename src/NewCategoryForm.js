@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const NewCategoryForm = () => {
+const NewCategoryForm = ({onAddCategory}) => {
   const [category, setCategory] = useState({
     name: "",
     image: "",
@@ -40,7 +40,7 @@ const NewCategoryForm = () => {
               return Promise.all(responses.map(r => r.json()))
             })
             .then((data) => {
-            // addCategory(data);
+            onAddCategory
             //  showAllYarns();
             console.log("Form submit data", data)
               // navigate("/categories");

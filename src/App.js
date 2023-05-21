@@ -27,6 +27,10 @@ function App() {
   setCategories(newCategories)
   }
 
+  const handleAddCategory = (newCategory) => {
+    setCategories([...categories, newCategory])
+  }
+
   return (
     <>
       <NavBar />
@@ -35,7 +39,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories categories={categories}/>} />
         <Route path="/categories/:id" element={<CategoryDetails categories={categories} onRemoveCategory={handleDeleteCategory}/>} />
-        <Route path="/categories/new" element={<NewCategoryForm />} />
+        <Route path="/categories/new" element={<NewCategoryForm onAddCategory={handleAddCategory}/>} />
         <Route path="/categories/:id/*" element={<CraftDetails categories={categories}/>} />
       </Routes>
     </>
