@@ -9,6 +9,7 @@ import NewCategoryForm from "./NewCategoryForm";
 import CategoryDetails from "./CategoryDetails";
 import CraftDetails from "./CraftDetails"
 import EditCategory from "./EditCategory";
+import NewCraftForm from "./NewCraftForm";
 
 
 function App() {
@@ -40,9 +41,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories categories={categories}/>} />
+        <Route path="/categories/new" element={<NewCategoryForm onAddCategory={handleAddCategory}/>}/>
         <Route path="/categories/:id" element={<CategoryDetails categories={categories} onRemoveCategory={handleDeleteCategory}/>} />
-        <Route path="/categories/new" element={<NewCategoryForm onAddCategory={handleAddCategory}/>} />
         <Route path="/categories/:id/edit" element={<EditCategory categories={categories}/>} />
+        <Route path="/categories/:id/new" element={<NewCraftForm />}/>
         <Route path="/categories/:id/*" element={<CraftDetails categories={categories}/>} />
       </Routes>
     </>

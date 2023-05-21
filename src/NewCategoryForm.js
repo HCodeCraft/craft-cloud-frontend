@@ -41,7 +41,7 @@ const NewCategoryForm = ({onAddCategory}) => {
             onAddCategory()
             //  showAllYarns();
             console.log("Form submit data", data)
-              // navigate("/categories");
+              navigate("/categories");
             });
         };
 

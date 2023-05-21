@@ -7,7 +7,9 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
   const { id } = useParams();
   const location = useLocation()
   const editUrl = location.pathname + "/edit";
+  const newCraftUrl = location.pathname + "/new";
   const category = categories.find((c) => c.id == id);
+
 
 
   const handleDeleteClick = () => {
@@ -46,7 +48,9 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
       <div>
       <h4>Difficulty:</h4><p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p> 
       <div className='btn' id='projectbtn'>
+        <Link to={newCraftUrl}>
       <button>Add a Project</button>
+      </Link>
       </div>
       </div>
     </div>
