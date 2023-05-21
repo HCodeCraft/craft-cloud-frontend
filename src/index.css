@@ -12,3 +12,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.craftdetailbox h3{
+  flex-direction: column;
+  justify-content: center;
+}
+
+h4 {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+}

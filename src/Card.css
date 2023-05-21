@@ -7,12 +7,13 @@
     text-align: center;
     width: 300px;
     overflow: hidden;
-    box-shadow: 0px 0px 15px 5px #DFA67B;
+    box-shadow: 0px 0px 15px 5px #F4B183;
     transition: 0.3s;
     animation: ease-in;
     color: black;
     align-items: center;
     display: inline;
+    background-color: #FFF2CC;
   }
   
   .card-container:hover {

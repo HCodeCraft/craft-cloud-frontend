@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 
 
-const CraftCard = ({craft, category}) => {
+const CraftCard = ({craft}) => {
     let hearts;
 
     hearts = (craft !== undefined ?
@@ -33,6 +33,7 @@ const CraftCard = ({craft, category}) => {
       <br />
 
       <div className="btn">
+      {/* Add prop of hearts? */}
         <Link to={`${craft.id}`}>
           <button>Show More</button>
         </Link>

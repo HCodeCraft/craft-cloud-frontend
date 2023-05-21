@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CraftCard from './CraftCard'
 
-const CategoryDetails = ({ categories }) => {
-  console.log("categories", categories);
+const CategoryDetails = ({ categories, onDeleteCategory }) => {
 
   const { id } = useParams();
   const category = categories.find((c) => c.id == id);
 
-  console.log("category", category)
-
-  
+  const handleDeleteClick = () => {
+    fetch('http://localhost:9292/categories', {
+      method: "DELETE"
+    })
+    onDeleteCategory(id)
+  }
 
   return category != undefined ? (
     <div>
@@ -35,7 +37,7 @@ const CategoryDetails = ({ categories }) => {
         
 
         <div className="text">
-          {/* <button onClick={() => handleDelete(id)}>Delete Category</button> */}
+          <button onClick={() => handleDeleteClick(id)}>Delete Category</button>
         </div>
         <br />
         <br />

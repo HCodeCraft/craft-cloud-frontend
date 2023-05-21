@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar";
 import "./App.css";
+import "./Card.css"
 import Home from "./Home";
 import Categories from "./Categories";
 import NewCategoryForm from "./NewCategoryForm";
@@ -21,6 +22,11 @@ function App() {
       });
   }, []);
 
+  const handleDeleteCategory = (id) => {
+    const newCategories = categories.filter((category) => category.id !== id)
+  setCategories(newCategories)
+  }
+
   return (
     <>
       <NavBar />
@@ -28,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories categories={categories}/>} />
-        <Route path="/categories/:id" element={<CategoryDetails categories={categories}/>} />
+        <Route path="/categories/:id" element={<CategoryDetails categories={categories} onRemoveCategory={handleDeleteCategory}/>} />
         <Route path="/categories/new" element={<NewCategoryForm />} />
         <Route path="/categories/:id/*" element={<CraftDetails categories={categories}/>} />
       </Routes>

@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "./Card.css";
 import { Link, useNavigate } from "react-router-dom";
 
 const Category = ({ name, image, description, id, category }) => {
