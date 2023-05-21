@@ -33,7 +33,7 @@ const CraftCard = ({craft}) => {
       <br />
 
       <div className="btn">
-      {/* Add prop of hearts? */}
+      
         <Link to={`${craft.id}`}>
           <button>Show More</button>
         </Link>

@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
 import CraftCard from './CraftCard'
 
 const CategoryDetails = ({ categories, onDeleteCategory }) => {
 
   const { id } = useParams();
+  const location = useLocation()
+  const editUrl = location.pathname + "/edit";
   const category = categories.find((c) => c.id == id);
+
 
   const handleDeleteClick = () => {
     fetch(`http://localhost:9292/categories/${id}`, {
@@ -26,8 +29,10 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
           <h4> {category.description}</h4>
           <br/>
           <div className='sidebtn, btn'>
+          <Link to={editUrl}>
           <button>Edit Category</button>
-          <button>Delete Category</button>
+          </Link>
+          <button onClick={() => handleDeleteClick(id) }>Delete Category</button>
           </div>
         </div>
         <div className="text">
@@ -35,13 +40,15 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
         </div>
         {category.crafts.map((craft) => <CraftCard key={craft.id} craft={craft} category={category}/>)}
         
-
-        <div className="text">
-          <button onClick={() => handleDeleteClick(id)}>Delete Category</button>
-        </div>
         <br />
         <br />
-      </div> <h4>Difficulty:</h4><p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p> 
+      </div > 
+      <div>
+      <h4>Difficulty:</h4><p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p> 
+      <div className='btn' id='projectbtn'>
+      <button>Add a Project</button>
+      </div>
+      </div>
     </div>
   ) : (
     <>

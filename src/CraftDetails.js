@@ -25,8 +25,7 @@ const CraftDetails = ({ categories }) => {
         fetch(`http://localhost:9292/crafts/${id}`, {
           method: "DELETE",
         }).then(() => {
-          const updatedYarns = context.yarnsState.filter((y) => y.id != id);
-          context.setYarnsState(updatedYarns);
+          handleDelete(id)
           navigate("/category");
         });
       };
@@ -34,7 +33,7 @@ const CraftDetails = ({ categories }) => {
   return craft != undefined ? (
     <div>
       <h1 className="title">{craft.name}</h1>
-      <div classname="content">
+      <div className="content">
         <img id="yarnpic" src={craft.image} alt="category" />
       </div>
       <div>
@@ -43,7 +42,7 @@ const CraftDetails = ({ categories }) => {
           <h3>{hearts}</h3>
           <h3>Completed: {craft.completed === "true" ? "Yes" : "No"}</h3>
           <h3> {craft.description}</h3>
-          <h3>{craft.notes}</h3>
+          <h3>Notes: {craft.notes}</h3>
           <Link to={craft.link} className="text">
             Directions/Reference
           </Link>

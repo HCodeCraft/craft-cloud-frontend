@@ -23,3 +23,9 @@ h4 {
   flex-direction:column;
   justify-content: center;
 }
+
+.projectbtn {
+  align-content: end;
+  color:#DFA67B;
+  font-size:large;
+}
