@@ -2,10 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Category = ({ name, image, description, id, category }) => {
-  const navigate = useNavigate();
 
-
-  // const state = { category };
   return (
     <div className="card-container">
       <div className="image-container">
@@ -23,7 +20,12 @@ const Category = ({ name, image, description, id, category }) => {
         <br />
 
         <div className="btn">
-          <Link to={{ pathname: `/categories/${id}`, state: {category: category} }}>
+          <Link
+            to={{
+              pathname: `/categories/${id}`,
+              state: { category: category },
+            }}
+          >
             <button>Show Craft Projects</button>
           </Link>
           <br />

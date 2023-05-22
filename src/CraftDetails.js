@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React from "react";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 
 const CraftDetails = ({ categories }) => {
-  console.log("categories", categories);
-
   const params = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const editUrl = location.pathname + "/edit";
 
   const category = categories.find((c) => c.id == params.id);
 
   const craft = category.crafts.find((c) => c.id == params["*"]);
+
+  const id = category.id;
 
   let hearts;
 
@@ -21,14 +24,14 @@ const CraftDetails = ({ categories }) => {
         : (hearts = "❤️❤️❤️")
       : null;
 
-      const handleDelete = (id) => {
-        fetch(`http://localhost:9292/crafts/${id}`, {
-          method: "DELETE",
-        }).then(() => {
-          handleDelete(id)
-          navigate("/category");
-        });
-      };
+  const handleDelete = (id) => {
+    fetch(`http://localhost:9292/crafts/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      handleDelete(id);
+      navigate("/category");
+    });
+  };
 
   return craft != undefined ? (
     <div>
@@ -40,22 +43,26 @@ const CraftDetails = ({ categories }) => {
         <br />
         <div className="text, craftdetailbox">
           <h3>{hearts}</h3>
+          <br />
           <h3>Completed: {craft.completed === "true" ? "Yes" : "No"}</h3>
-          <h3> {craft.description}</h3>
-          <h3>Notes: {craft.notes}</h3>
+          <br />
+          <p> {craft.description}</p>
+          <br />
+          <p>Notes: {craft.notes}</p>
+          <br />
           <Link to={craft.link} className="text">
             Directions/Reference
           </Link>
           <br />
           <div className="sidebtn, btn">
-            <button>Edit Craft</button>
+            <Link to={editUrl}>
+              <button>Edit Craft</button>
+            </Link>
             <button onClick={() => handleDelete(id)}>Delete Craft</button>
           </div>
         </div>
 
-        <div className="text">
-          {/* <button onClick={() => handleDelete(id)}>Delete Category</button> */}
-        </div>
+        <div className="text"></div>
         <br />
         <br />
       </div>{" "}

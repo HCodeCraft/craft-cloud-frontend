@@ -1,11 +1,7 @@
 import React from "react";
 import Category from "./Category";
 
-
-
-const Categories = ({categories}) => {
-
-
+const Categories = ({ categories }) => {
   const categoryList = categories.map((category) => (
     <Category
       id={category.id}
