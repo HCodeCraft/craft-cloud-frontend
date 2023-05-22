@@ -44,6 +44,18 @@ function App() {
   //   setCategories(updatedCategories);
   // }
 
+  const handleEditCategory = (editiedCategory) => {
+    const updatedCategories = categories.map((category) => {
+      if (category.id === editiedCategory.id){
+        return editiedCategory;
+      } else {
+        return category
+      }
+    })
+      setCategories(updatedCategories)
+    
+  }
+
   return (
     <>
       <NavBar />
@@ -69,7 +81,7 @@ function App() {
         />
         <Route
           path="/categories/:id/edit"
-          element={<EditCategory categories={categories} />}
+          element={<EditCategory categories={categories} onEditCategory={handleEditCategory} />}
         />
         <Route
           path="/categories/:id/new"
