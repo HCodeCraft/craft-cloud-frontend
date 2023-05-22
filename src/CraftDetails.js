@@ -55,9 +55,9 @@ const CraftDetails = ({ categories }) => {
           </Link>
           <br />
           <div className="sidebtn, btn">
-            <Link to={editUrl}>
-              <button>Edit Craft</button>
-            </Link>
+            {/* <Link to={editUrl}> */}
+              <button onClick={() => navigate(`${craft.id}/edit`)}>Edit Craft</button>
+            {/* </Link> */}
             <button onClick={() => handleDelete(id)}>Delete Craft</button>
           </div>
         </div>
@@ -74,7 +74,7 @@ const CraftDetails = ({ categories }) => {
       <br />
       <br />
       <br />
-      <h1 className="title">Loading...</h1>
+      <h1 className="title">Loading... this is CraftDetails</h1>
     </>
   );
 };

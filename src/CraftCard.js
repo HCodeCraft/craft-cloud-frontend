@@ -40,7 +40,7 @@ const CraftCard = ({ craft }) => {
       </div>
     </div>
   ) : (
-    <h2>Loading...</h2>
+    <h2>Loading... This is CraftCard</h2>
   );
 };
 

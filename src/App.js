@@ -46,20 +46,18 @@ function App() {
 
   const handleEditCategory = (editiedCategory) => {
     const updatedCategories = categories.map((category) => {
-      if (category.id === editiedCategory.id){
+      if (category.id === editiedCategory.id) {
         return editiedCategory;
       } else {
-        return category
+        return category;
       }
-    })
-      setCategories(updatedCategories)
-    
-  }
+    });
+    setCategories(updatedCategories);
+  };
 
   return (
     <>
       <NavBar />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -81,19 +79,25 @@ function App() {
         />
         <Route
           path="/categories/:id/edit"
-          element={<EditCategory categories={categories} onEditCategory={handleEditCategory} />}
-        />
-        <Route
-          path="/categories/:id/new"
-          element={<NewCraftForm categories={categories} />}
+          element={
+            <EditCategory
+              categories={categories}
+              onEditCategory={handleEditCategory}
+            />
+          }
         />
         <Route
           path="/categories/:id/*"
           element={<CraftDetails categories={categories} />}
         />
         <Route
-          path="/categories/*/:id/edit"
-          element={<EditCraft crafts={categories.crafts} />}
+          path="/categories/:id/new"
+          element={<NewCraftForm categories={categories} />}
+        />
+
+        <Route
+          path='/categories/:id/:craft_id/edit'
+          element={<EditCraft categories={categories} />}
         />
       </Routes>
     </>

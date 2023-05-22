@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
 import CraftCard from "./CraftCard";
 
@@ -9,12 +9,28 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
   const newCraftUrl = location.pathname + "/new";
   const category = categories.find((c) => c.id == id);
 
+const [craftData, setCraftData] = useState([])
+
+useEffect(() => {
+  let crafts;
+  if (category.crafts !== undefined) {
+    crafts = category.crafts;
+  } else {
+    crafts = null;
+  }
+  setCraftData(crafts);
+}, [craftData]);
+
+
+
   const handleDeleteClick = () => {
     fetch(`http://localhost:9292/categories/${id}`, {
       method: "DELETE",
     });
     onDeleteCategory(id);
   };
+console.log("category", category)
+console.log("category.crafts", category.crafts)
 
   return category != undefined ? (
     <div>
@@ -39,9 +55,9 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
         <div className="text">
           <h2>{category.name} Projects</h2>
         </div>
-        {category.crafts.map((craft) => (
+        {craftData != '[]' ? category.crafts.map((craft) => (
           <CraftCard key={craft.id} craft={craft} category={category} />
-        ))}
+        )) : <h2>Loading Crafts...</h2>}
 
         <br />
         <br />
@@ -60,8 +76,8 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
     <>
       <br />
       <br />
+      <h1>Loading.... this is CategoryDetails</h1>
       <br />
-      <h1 className="title">Loading...</h1>
     </>
   );
 };

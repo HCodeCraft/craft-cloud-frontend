@@ -14,7 +14,7 @@ const Categories = ({ categories }) => {
   ));
 
   return categories != undefined ? <div>{categoryList}</div> :
-  <h2>Loading ...</h2>
+  <h2>Loading ... This is Categories</h2>
 };
 
 export default Categories;
