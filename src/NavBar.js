@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Banner from "./cloudban.jpg";
+import Banner from "./Directory/cloudban.jpg";
 import Categories from "./Categories";
 import NewCategoryForm from "./NewCategoryForm";
 

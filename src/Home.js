@@ -1,5 +1,5 @@
 import React from "react";
-import CloudImg from "./amicloud.jpg";
+import CloudImg from "./Directory/amicloud.jpg";
 
 const Home = () => {
   return (

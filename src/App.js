@@ -12,6 +12,7 @@ import EditCategory from "./EditCategory";
 import NewCraftForm from "./NewCraftForm";
 import EditCraft from "./EditCraft";
 
+
 function App() {
   const [categories, setCategories] = useState([]);
 
