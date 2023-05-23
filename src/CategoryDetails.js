@@ -7,19 +7,24 @@ const CategoryDetails = ({ categories, onDeleteCategory }) => {
   const location = useLocation();
   const editUrl = location.pathname + "/edit";
   const newCraftUrl = location.pathname + "/new";
-  const category = categories.find((c) => c.id == id);
+  // const category = categories.find((c) => c.id == id);
 
-const [craftData, setCraftData] = useState([])
+  const [category, setCategory] = useState({
+    name:"",
+    image:'',
+    description:"",
+    crafts: []
+
+  })
+
 
 useEffect(() => {
-  let crafts;
-  if (category.crafts !== undefined) {
-    crafts = category.crafts;
-  } else {
-    crafts = null;
+
+  const cat = categories.find((c) => c.id == id);
+  if (cat) {
+    setCategory(cat)
   }
-  setCraftData(crafts);
-}, [craftData]);
+}, [categories]);
 
 
 
@@ -32,7 +37,7 @@ useEffect(() => {
 console.log("category", category)
 console.log("category.crafts", category.crafts)
 
-  return category != undefined ? (
+  return (
     <div>
       <h1 className="title">{category.name}</h1>
       <div className="content">
@@ -55,13 +60,13 @@ console.log("category.crafts", category.crafts)
         <div className="text">
           <h2>{category.name} Projects</h2>
         </div>
-        {craftData != '[]' ? category.crafts.map((craft) => (
+        {category.crafts.map((craft) => 
           <CraftCard key={craft.id} craft={craft} category={category} />
-        )) : <h2>Loading Crafts...</h2>}
+        )}
+
 
         <br />
         <br />
-      </div>
       <div>
         <h4>Difficulty:</h4>
         <p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p>
@@ -72,14 +77,8 @@ console.log("category.crafts", category.crafts)
         </div>
       </div>
     </div>
-  ) : (
-    <>
-      <br />
-      <br />
-      <h1>Loading.... this is CategoryDetails</h1>
-      <br />
-    </>
-  );
+    </div>
+  ) 
 };
 
 export default CategoryDetails;

@@ -44,10 +44,11 @@ function App() {
   //   setCategories(updatedCategories);
   // }
 
-  const handleEditCategory = (editiedCategory) => {
+  const handleEditCategory = (editedCategory) => {
+
     const updatedCategories = categories.map((category) => {
-      if (category.id === editiedCategory.id) {
-        return editiedCategory;
+      if (category.id === editedCategory.id) {
+        return editedCategory;
       } else {
         return category;
       }
@@ -87,7 +88,7 @@ function App() {
           }
         />
         <Route
-          path="/categories/:id/*"
+          path="/categories/:category_id/crafts/:id"
           element={<CraftDetails categories={categories} />}
         />
         <Route
