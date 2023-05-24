@@ -2,18 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CraftCard = ({ craft }) => {
-  let hearts;
+  let hearts =
+    craft.difficulty === "easy"
+      ? (hearts = "💚")
+      : craft.difficulty === "medium"
+      ? (hearts = "🧡🧡")
+      : (hearts = "❤️❤️❤️");
 
-  hearts =
-    craft !== undefined
-      ? craft.difficulty === "easy"
-        ? (hearts = "💚")
-        : craft.difficulty === "medium"
-        ? (hearts = "🧡🧡")
-        : (hearts = "❤️❤️❤️")
-      : null;
-
-  return craft !== undefined ? (
+  return (
     <div className="card-container">
       <div className="image-container">
         <img src={craft.image} alt="" />
@@ -31,7 +27,7 @@ const CraftCard = ({ craft }) => {
         <br />
 
         <div className="btn">
-          <Link to={`${craft.id}`}>
+          <Link to={`crafts/${craft.id}`}>
             <button>Show More</button>
           </Link>
           <br />
@@ -39,8 +35,6 @@ const CraftCard = ({ craft }) => {
         </div>
       </div>
     </div>
-  ) : (
-    <h2>Loading... This is CraftCard</h2>
   );
 };
 

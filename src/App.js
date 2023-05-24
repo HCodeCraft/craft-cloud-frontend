@@ -21,7 +21,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
-        console.log("data", data);
       });
   }, []);
 
@@ -88,17 +87,21 @@ function App() {
             />
           }
         />
+           {/* Not working :( */}
         <Route
           path="/categories/:category_id/crafts/:id"
           element={<CraftDetails categories={categories} />}
         />
+
+       
         <Route
           path="/categories/:id/new"
           element={<NewCraftForm categories={categories} />}
         />
 
+          {/* Not working :( */}
         <Route
-          path='/categories/:id/:craft_id/edit'
+          path='/categories/:category_id/crafts/:id/edit'
           element={<EditCraft categories={categories} />}
         />
       </Routes>

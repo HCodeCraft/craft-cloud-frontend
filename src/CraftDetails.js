@@ -5,11 +5,12 @@ const CraftDetails = ({ categories }) => {
   const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const editUrl = location.pathname + "/edit";
 
-  const category = categories.find((c) => c.id == params.id);
+// Path: "/categories/:category_id/crafts/:id"
+  const category = categories.find((c) => c.id == params.category_id);
 
-  const craft = category.crafts.find((c) => c.id == params["*"]);
+  const craft = category.crafts.find((c) => c.id == params.id)
+
 
   const id = category.id;
 
@@ -33,7 +34,7 @@ const CraftDetails = ({ categories }) => {
     });
   };
 
-  return craft != undefined ? (
+  return (
     <div>
       <h1 className="title">{craft.name}</h1>
       <div className="content">
@@ -56,7 +57,7 @@ const CraftDetails = ({ categories }) => {
           <br />
           <div className="sidebtn, btn">
             {/* <Link to={editUrl}> */}
-              <button onClick={() => navigate(`${craft.id}/edit`)}>Edit Craft</button>
+              <button onClick={() => navigate(`edit`)}>Edit Craft</button>
             {/* </Link> */}
             <button onClick={() => handleDelete(id)}>Delete Craft</button>
           </div>
@@ -69,13 +70,6 @@ const CraftDetails = ({ categories }) => {
       <h4>Difficulty:</h4>
       <p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p>
     </div>
-  ) : (
-    <>
-      <br />
-      <br />
-      <br />
-      <h1 className="title">Loading... this is CraftDetails</h1>
-    </>
   );
 };
 
