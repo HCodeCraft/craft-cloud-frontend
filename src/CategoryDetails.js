@@ -11,6 +11,7 @@ const CategoryDetails = ({ categories, onRemoveCategory }) => {
   const newCraftUrl = location.pathname + "/new";
   // const category = categories.find((c) => c.id == id);
 
+
   const [category, setCategory] = useState({
     name: "",
     image: "",
@@ -18,6 +19,9 @@ const CategoryDetails = ({ categories, onRemoveCategory }) => {
     crafts: [],
   });
 
+  const myData = {
+    foo:"bar"
+  }
   const [crafts, setCrafts] = useState([]);
 
   useEffect(() => {
@@ -76,7 +80,7 @@ const CategoryDetails = ({ categories, onRemoveCategory }) => {
           <h4>Difficulty:</h4>
           <p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p>
           <div className="btn" id="projectbtn">
-            <Link to={newCraftUrl}>
+            <Link to={newCraftUrl} state={myData}>
               <button>Add a {category.name} Craft</button>
             </Link>
           </div>

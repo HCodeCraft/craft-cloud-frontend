@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const NewCraftForm = ({ categories, onAddCategory}) => {
+const NewCraftForm = ({ categories, onAddCategory }) => {
   const params = useParams();
-  const navigate = useNavigate()
-  const selectedCategory = categories.find((c) => c.id == params.id);
+  const navigate = useNavigate();
+
+  const [category, setCategory] = useState({
+    name: "",
+    image: "",
+    description: "",
+  });
+
+  useEffect(() => {
+    const cat = categories.find((c) => c.id == params.id);
+
+    if (cat) {
+      setCategory(cat);
+    }
+  }, [categories, category]);
 
   const [craft, setCraft] = useState({
     name: "",
@@ -12,7 +25,7 @@ const NewCraftForm = ({ categories, onAddCategory}) => {
     difficulty: "",
     description: "",
     notes: "",
-    link:"",
+    link: "",
     completed: false,
   });
 
@@ -32,10 +45,10 @@ const NewCraftForm = ({ categories, onAddCategory}) => {
       description: craft.description,
       notes: craft.notes,
       completed: false,
-      category_id: params.id
+      category_id: params.id,
     };
 
-    fetch(`http://localhost:9292/categories/${selectedCategory.id}/crafts`, {
+    fetch(`http://localhost:9292/categories/${category.id}/crafts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +59,7 @@ const NewCraftForm = ({ categories, onAddCategory}) => {
       .then((data) => {
         //   onAddCraft()
         console.log("New Craft data", data);
-        onAddCategory(selectedCategory)
+        onAddCategory(category);
         navigate(`/categories/${params.id}`);
       });
   };
@@ -55,10 +68,10 @@ const NewCraftForm = ({ categories, onAddCategory}) => {
     <div className="yarnform">
       <br />
       <div className="title">
-        <h1>Add a {selectedCategory.name} Craft</h1>
+        <h1>Add a {category.name} Craft</h1>
       </div>
       <br />
-      <img className='craftformpic' src={selectedCategory.image} />
+      <img className="craftformpic" src={category.image} />
       <br />
       <br />
       <form onSubmit={handleSubmit}>
@@ -70,7 +83,7 @@ const NewCraftForm = ({ categories, onAddCategory}) => {
         <br />
         <label>Difficulty:</label>
         <select onChange={handleChange} name="difficulty">
-        <option value="">    </option>
+          <option value=""> </option>
           <option value="easy">Easy 💚 </option>
           <option value="medium">Medium 🧡🧡</option>
           <option value="hard">Hard ❤️❤️❤️</option>
@@ -98,9 +111,9 @@ const NewCraftForm = ({ categories, onAddCategory}) => {
         <br />
         <br />
         <label>Link:</label>
-        <input name="link" onChange={handleChange} type="text" /> 
+        <input name="link" onChange={handleChange} type="text" />
         <br />
-        <br/>
+        <br />
         <input type="submit" />
       </form>
     </div>
