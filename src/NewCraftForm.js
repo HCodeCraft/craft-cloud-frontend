@@ -84,17 +84,17 @@ const NewCraftForm = ({ categories, onAddCategory}) => {
           name="description"
           onChange={handleChange}
           type="text"
-        />{" "}
+        />
         <br />
         <br />
         <label>Notes:</label>
         <textarea
           rows={5}
           cols={20}
-          name="description"
+          name="notes"
           onChange={handleChange}
           type="text"
-        />{" "}
+        />
         <br />
         <br />
         <label>Link:</label>

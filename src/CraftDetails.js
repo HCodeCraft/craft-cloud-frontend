@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 
-const CraftDetails = ({ categories }) => {
+const CraftDetails = ({ categories, onDeleteCraft }) => {
   const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,7 +30,7 @@ const CraftDetails = ({ categories }) => {
       method: "DELETE",
     })
     .then(() => {
-      handleDelete(id);
+      onDeleteCraft(id);
       navigate(`/categories/${params.category_id}`);
     });
   };

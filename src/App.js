@@ -12,7 +12,6 @@ import EditCategory from "./EditCategory";
 import NewCraftForm from "./NewCraftForm";
 import EditCraft from "./EditCraft";
 
-
 function App() {
   const [categories, setCategories] = useState([]);
 
@@ -25,9 +24,28 @@ function App() {
   }, []);
 
   const handleDeleteCategory = (deletedCategory) => {
-    console.log("id from in handleDelete", deletedCategory.id)
-    const newCategories = categories.filter((category) => category.id != deletedCategory.id);
+    console.log("id from in handleDelete", deletedCategory.id);
+    const newCategories = categories.filter(
+      (category) => category.id != deletedCategory.id
+    );
     setCategories(newCategories);
+  };
+
+
+  //// ooops added a category toooo
+  const handleDeleteCraft = (category, deletedCraft) => {
+    // map through certain category to find craft with the deletedcraft id
+    const updatedCrafts = category.crafts.filter(
+      (craft) => craft.id != deletedCraft.id
+    );
+    const updatedCategories = categories.map((cat) => {
+      if (cat.id === category.id) {
+        updateCategory.crafts = updatedCrafts
+        return updatedCategory;
+      } else {
+        return category;
+      }
+    });
   };
 
   const handleAddCategory = (newCategory) => {
@@ -46,7 +64,6 @@ function App() {
   // }
 
   const handleEditCategory = (editedCategory) => {
-
     const updatedCategories = categories.map((category) => {
       if (category.id === editedCategory.id) {
         return editedCategory;
@@ -88,22 +105,26 @@ function App() {
             />
           }
         />
-          
+
         <Route
           path="/categories/:category_id/crafts/:id"
-          element={<CraftDetails categories={categories} />}
+          element={<CraftDetails categories={categories} onDeleteCraft={handleDeleteCraft} />}
         />
 
-       
         <Route
           path="/categories/:id/new"
-          element={<NewCraftForm categories={categories} onAddCategory={handleAddCategory} />}
+          element={
+            <NewCraftForm
+              categories={categories}
+              onAddCategory={handleAddCategory}
+            />
+          }
         />
 
-          {/* Not working :( */}
+        {/* Not working :( */}
         <Route
-          path='/categories/:category_id/crafts/:id/edit'
-          element={<EditCraft categories={categories}  />}
+          path="/categories/:category_id/crafts/:id/edit"
+          element={<EditCraft categories={categories} />}
         />
       </Routes>
     </>
