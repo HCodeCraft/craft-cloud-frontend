@@ -25,6 +25,7 @@ const CraftCard = ({ craft }) => {
           <p>{craft.description}</p>
         </div>
         <br />
+        <p>{craft.notes}</p>
 
         <div className="btn">
           <Link to={`crafts/${craft.id}`}>

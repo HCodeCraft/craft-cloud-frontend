@@ -49,6 +49,7 @@ const EditCraft = ({ categories }) => {
     });
   };
 
+  console.log("craft", craft)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,20 +60,20 @@ const EditCraft = ({ categories }) => {
       description: craft.description,
       notes: craft.notes,
       completed: false,
-      category_id: params.category_id,
+      category_id: id,
     };
-
+console.log("editedCraft", editedCraft)
     fetch(`http://localhost:9292/crafts/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify( {editedCraft}),
+      body: JSON.stringify( (editedCraft)),
     })
       .then((res) => res.json())
       .then((data) => {
 
-        console.log("Craft form submit data", data);
+        console.log("Craft form patch submit data", data);
         navigate(`/categories/${id}`);
         setCraft({name: "",
         image: "",
@@ -115,6 +116,15 @@ const EditCraft = ({ categories }) => {
         />
         <br />
         <br />
+        <label>Link:</label>
+        <input
+          name="link"
+          onChange={handleChange}
+          type="text"
+          value={craft.link}
+        />
+        <br />
+        <br/>
         <label>Description:</label>
         <textarea
           rows={5}
