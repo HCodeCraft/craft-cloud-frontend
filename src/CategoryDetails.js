@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, Link, useLocation, useNavigate} from "react-router-dom";
 import CraftCard from "./CraftCard";
 
-const CategoryDetails = ({ categories, onDeleteCategory }) => {
-  const { id } = useParams();
+const CategoryDetails = ({ categories, onRemoveCategory }) => {
+  let { id } = useParams();
+  const navigate = useNavigate()
+   id = parseInt(id)
   const location = useLocation();
   const editUrl = location.pathname + "/edit";
   const newCraftUrl = location.pathname + "/new";
@@ -28,16 +30,17 @@ useEffect(() => {
 
 
 
-  const handleDeleteClick = () => {
-    fetch(`http://localhost:9292/categories/${id}`, {
+  const handleDeleteClick = (deletedCategory) => {
+    console.log("id from in handledeleteclick", deletedCategory.id)
+    fetch(`http://localhost:9292/categories/${deletedCategory.id}`, {
       method: "DELETE",
-    });
-    onDeleteCategory(id);
+    })
+    .then (() => onRemoveCategory(deletedCategory))
+    .then(navigate('/categories'))
   };
-console.log("category", category)
-console.log("category.crafts", category.crafts)
 
-  return (
+
+  return (category) ? (
     <div>
       <h1 className="title">{category.name}</h1>
       <div className="content">
@@ -52,7 +55,7 @@ console.log("category.crafts", category.crafts)
             <Link to={editUrl}>
               <button>Edit Category</button>
             </Link>
-            <button onClick={() => handleDeleteClick(id)}>
+            <button onClick={() => handleDeleteClick(category)}>
               Delete Category
             </button>
           </div>
@@ -78,7 +81,7 @@ console.log("category.crafts", category.crafts)
       </div>
     </div>
     </div>
-  ) 
+  ) : null
 };
 
 export default CategoryDetails;

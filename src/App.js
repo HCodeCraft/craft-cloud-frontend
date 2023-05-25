@@ -24,8 +24,9 @@ function App() {
       });
   }, []);
 
-  const handleDeleteCategory = (id) => {
-    const newCategories = categories.filter((category) => category.id !== id);
+  const handleDeleteCategory = (deletedCategory) => {
+    console.log("id from in handleDelete", deletedCategory.id)
+    const newCategories = categories.filter((category) => category.id != deletedCategory.id);
     setCategories(newCategories);
   };
 
@@ -87,7 +88,7 @@ function App() {
             />
           }
         />
-           {/* Not working :( */}
+          
         <Route
           path="/categories/:category_id/crafts/:id"
           element={<CraftDetails categories={categories} />}
@@ -96,13 +97,13 @@ function App() {
        
         <Route
           path="/categories/:id/new"
-          element={<NewCraftForm categories={categories} />}
+          element={<NewCraftForm categories={categories} onAddCategory={handleAddCategory} />}
         />
 
           {/* Not working :( */}
         <Route
           path='/categories/:category_id/crafts/:id/edit'
-          element={<EditCraft categories={categories} />}
+          element={<EditCraft categories={categories}  />}
         />
       </Routes>
     </>

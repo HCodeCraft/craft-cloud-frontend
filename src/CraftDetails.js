@@ -14,23 +14,24 @@ const CraftDetails = ({ categories }) => {
 
   const id = category.id;
 
-  let hearts;
+  console.log("location", location)
 
-  hearts =
-    craft !== undefined
-      ? craft.difficulty === "easy"
+
+ let hearts =
+    craft.difficulty === "easy"
         ? (hearts = "💚")
         : craft.difficulty === "medium"
         ? (hearts = "🧡🧡")
         : (hearts = "❤️❤️❤️")
-      : null;
+  
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:9292/crafts/${id}`, {
+    fetch(`http://localhost:9292/crafts/${craft.id}`, {
       method: "DELETE",
-    }).then(() => {
+    })
+    .then(() => {
       handleDelete(id);
-      navigate("/category");
+      navigate(`/categories/${params.category_id}`);
     });
   };
 

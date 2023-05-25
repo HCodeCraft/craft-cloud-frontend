@@ -4,9 +4,10 @@ import { useParams, useNavigate } from "react-router-dom";
 const EditCraft = ({ categories }) => {
   const params = useParams();
   const navigate = useNavigate();
-  const id = params.id;
+  const id = parseInt(params.id);
 
   console.log("params", params)
+
 
   const [category, setCategory] = useState({
     name: "",
@@ -21,27 +22,25 @@ const EditCraft = ({ categories }) => {
     difficulty: "",
     description: "",
     notes: "",
-    link:"",
-    completed: false,
+    link: "",
+    completed: false
   });
+
 
 
   useEffect(() => {
     const cat = categories.find((c) => c.id == params.category_id);
-    if (cat) {
-        console.log("cat", cat)
-      setCategory(cat);
-    }
-  }, [categories]);
 
-  useEffect(() => {
-    if (categories) {
-    
-    const selectedCraft = category.crafts.find((c) => c.id == id);
-    debugger
-    console.log(selectedCraft)
-    setCraft(selectedCraft) }
-  }, [categories, craft])
+    if (cat) {
+      setCategory(cat);
+
+      const selectedCraft = category.crafts.find((c) => c.id == params.id);
+      if (selectedCraft) {
+        setCraft(selectedCraft);
+      }
+    }
+  }, [categories, category]);
+
 
   const handleChange = (e) => {
     setCraft({
@@ -50,7 +49,6 @@ const EditCraft = ({ categories }) => {
     });
   };
 
-  console.log("craft", craft)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,7 +59,7 @@ const EditCraft = ({ categories }) => {
       description: craft.description,
       notes: craft.notes,
       completed: false,
-      category_id: params.id,
+      category_id: params.category_id,
     };
 
     fetch(`http://localhost:9292/crafts/${id}`, {
@@ -69,13 +67,20 @@ const EditCraft = ({ categories }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ editedCraft }),
+      body: JSON.stringify( {editedCraft}),
     })
       .then((res) => res.json())
       .then((data) => {
-        //  showAllYarns();
+
         console.log("Craft form submit data", data);
         navigate(`/categories/${id}`);
+        setCraft({name: "",
+        image: "",
+        difficulty: "",
+        description: "",
+        notes: "",
+        link: "",
+        completed: false})
       });
   };
 
@@ -86,7 +91,7 @@ const EditCraft = ({ categories }) => {
         <h1>Edit {craft.name}</h1>
       </div>
       <br />
-      <img src={craft.image} />
+      <img className="craftformpic" src={craft.image} />
       <br />
       <br />
       <form onSubmit={handleSubmit}>
@@ -107,7 +112,7 @@ const EditCraft = ({ categories }) => {
           onChange={handleChange}
           type="text"
           value={craft.image}
-        />{" "}
+        />
         <br />
         <br />
         <label>Description:</label>
@@ -117,11 +122,12 @@ const EditCraft = ({ categories }) => {
           name="description"
           onChange={handleChange}
           value={craft.description}
-        />{" "}
+        />
         <br />
         <br />
         <label>Difficulty:</label>
-        <select onChange={handleChange} name="difficulty">
+        <select onChange={handleChange} name="difficulty" value={craft.difficulty}>
+            <option value="">    </option>
           <option value="easy">Easy 💚 </option>
           <option value="medium">Medium 🧡🧡</option>
           <option value="hard">Hard ❤️❤️❤️</option>
@@ -135,7 +141,8 @@ const EditCraft = ({ categories }) => {
           name="notes"
           onChange={handleChange}
           type="text"
-        />{" "}
+          value={craft.notes}
+        />
         <label>Completed</label>
         <input type="radio" value={craft.completed}></input>
         <input type="submit" />

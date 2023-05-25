@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Category from "./Category";
 
 const Categories = ({ categories }) => {
 
-  const categoryList = categories.map((category) => (
+  const [cat, setCat] = useState([{
+    name:"",
+    image:"",
+    description:"",
+    id:""
+  }])
+
+
+  useEffect(() => {
+if (cat){
+  setCat(categories)
+}
+  }, [categories])
+
+
+
+  const categoryList = cat.map((category) => (
     <Category
       id={category.id}
       key={category.id}
@@ -11,10 +27,9 @@ const Categories = ({ categories }) => {
       image={category.image}
       description={category.description}
     />
-  ));
+));
 
-  return categories != undefined ? <div>{categoryList}</div> :
-  <h2>Loading ... This is Categories</h2>
+  return ( <div>{ (categories) ? categoryList : <h2>Loading...</h2> }</div> )
 };
 
 export default Categories;

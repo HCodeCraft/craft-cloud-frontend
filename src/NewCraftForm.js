@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const NewCraftForm = ({ categories }) => {
+const NewCraftForm = ({ categories, onAddCategory}) => {
   const params = useParams();
   const navigate = useNavigate()
   const selectedCategory = categories.find((c) => c.id == params.id);
@@ -46,6 +46,7 @@ const NewCraftForm = ({ categories }) => {
       .then((data) => {
         //   onAddCraft()
         console.log("New Craft data", data);
+        onAddCategory(selectedCategory)
         navigate(`/categories/${params.id}`);
       });
   };
@@ -69,6 +70,7 @@ const NewCraftForm = ({ categories }) => {
         <br />
         <label>Difficulty:</label>
         <select onChange={handleChange} name="difficulty">
+        <option value="">    </option>
           <option value="easy">Easy 💚 </option>
           <option value="medium">Medium 🧡🧡</option>
           <option value="hard">Hard ❤️❤️❤️</option>
