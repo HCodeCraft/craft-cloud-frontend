@@ -13,7 +13,18 @@ code {
     monospace;
 }
 
-.craftdetailbox h3{
+.detailbox {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-div {
+  display:flex;
+}
+
+#craftdetailbox {
+  display:flex;
   flex-direction: column;
   justify-content: center;
 }

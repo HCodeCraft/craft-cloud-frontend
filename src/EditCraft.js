@@ -6,7 +6,7 @@ const EditCraft = ({ categories, onEditCraft }) => {
   const navigate = useNavigate();
   const id = parseInt(params.id);
 
-
+const [clicked, setClicked] = useState(false)
 
   const [category, setCategory] = useState({
     name: "",
@@ -42,13 +42,13 @@ const EditCraft = ({ categories, onEditCraft }) => {
 
 
   const handleChange = (e) => {
+    const value = e.target.type === "radio" ? e.target.checked : e.target.value
     setCraft({
       ...craft,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
   };
 
-  console.log("craft", craft)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +58,7 @@ const EditCraft = ({ categories, onEditCraft }) => {
       difficulty: craft.difficulty,
       description: craft.description,
       notes: craft.notes,
-      completed: false,
+      completed: clicked,
       link: craft.link,
       category_id: parseInt(params.category_id),
     };
@@ -152,9 +152,15 @@ console.log("editedCraft", editedCraft)
           type="text"
           value={craft.notes}
         />
+        <br />
+        <br/>
         <label>Completed</label>
-        <input type="radio" value={craft.completed}></input>
+        <input type="radio" value={craft.completed} onChange={handleChange} onClick={() => setClicked(!clicked)} name="completed" checked={clicked}></input>
+        <br/>
+        <br/>
         <input type="submit" />
+        <br/>
+        <br/>
       </form>
     </div>
   );

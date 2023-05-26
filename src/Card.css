@@ -6,6 +6,7 @@
     float: left;
     text-align: center;
     width: 300px;
+    min-height: 420px;
     overflow: hidden;
     box-shadow: 0px 0px 15px 5px #F4B183;
     transition: 0.3s;
@@ -19,6 +20,10 @@
   .card-container:hover {
     transform: scale(1.1);
     box-shadow: 0px 0px 15px 0px;
+  }
+
+  .card-body {
+    min-height: 90px;
   }
   
   .image-container {

@@ -6,7 +6,6 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
   const [craft, setCraft] = useState({
     name: "",
     image: "",
@@ -18,28 +17,27 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
   });
 
   let hearts;
-    let id;
+  let id;
 
   useEffect(() => {
     const category = categories.find((c) => c.id == params.category_id);
 
     if (category) {
-    const selectedCraft = category.crafts.find((c) => c.id == params.id);
-    let hearts =
-      craft.difficulty === "easy"
-        ? (hearts = "💚")
-        : craft.difficulty === "medium"
-        ? (hearts = "🧡🧡")
-        : (hearts = "❤️❤️❤️");
+      const selectedCraft = category.crafts.find((c) => c.id == params.id);
 
-    let id = category.id;
+      let id = category.id;
 
-    setCraft(selectedCraft);
- } }, [categories]);
+      setCraft(selectedCraft);
+    }
+  }, [categories]);
 
- console.log("craft", craft)
- console.log("craft.link", craft.link)
 
+  hearts =
+    craft.difficulty === "easy"
+      ? (hearts = "💚")
+      : craft.difficulty === "medium"
+      ? (hearts = "🧡🧡")
+      : (hearts = "❤️❤️❤️");
 
   const handleDelete = (id) => {
     fetch(`http://localhost:9292/crafts/${craft.id}`, {
@@ -50,18 +48,22 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
     });
   };
 
+  console.log("craft.completed", craft.completed);
+
+  console.log("hearts", hearts);
+
   return (
     <div>
       <h1 className="title">{craft.name}</h1>
       <div className="content">
         <img id="yarnpic" src={craft.image} alt="category" />
       </div>
-      <div>
+     
         <br />
-        <div className="text, craftdetailbox">
+        <div id="craftdetailbox" className='text'>
           <h3>{hearts}</h3>
           <br />
-          <h3>Completed: {craft.completed === "true" ? "Yes" : "No"}</h3>
+          <h3>Completed: {craft.completed === true ? "Yes 🎉" : "No"}</h3>
           <br />
           <p> {craft.description}</p>
           <br />
@@ -71,6 +73,7 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
             Directions/Reference
           </Link>
           <br />
+          <div>
           <div className="sidebtn, btn">
             <button onClick={() => navigate(`edit`)}>Edit Craft</button>
 
@@ -82,8 +85,10 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
         <br />
         <br />
       </div>
-      <h4>Difficulty:</h4>
-      <p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p>
+      <div className='text'>
+          <h4>Difficulty:</h4>
+          <p> 💚 Easy,</p><p>🧡🧡 Medium,</p> <p>❤️❤️❤️ Hard </p>
+      </div>
     </div>
   );
 };
