@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const EditCraft = ({ categories }) => {
+const EditCraft = ({ categories, onEditCraft }) => {
   const params = useParams();
   const navigate = useNavigate();
   const id = parseInt(params.id);
 
-  console.log("params", params)
 
 
   const [category, setCategory] = useState({
@@ -60,7 +59,7 @@ const EditCraft = ({ categories }) => {
       description: craft.description,
       notes: craft.notes,
       completed: false,
-      category_id: id,
+      category_id: parseInt(params.category_id),
     };
 console.log("editedCraft", editedCraft)
     fetch(`http://localhost:9292/crafts/${id}`, {
@@ -72,9 +71,8 @@ console.log("editedCraft", editedCraft)
     })
       .then((res) => res.json())
       .then((data) => {
-
-        console.log("Craft form patch submit data", data);
-        navigate(`/categories/${id}`);
+        navigate(`/categories/${editedCraft.category_id}`);
+        onEditCraft(data)
         setCraft({name: "",
         image: "",
         difficulty: "",

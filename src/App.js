@@ -20,6 +20,8 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
+        // const manyCrafts = data.flatMap((c) => c.crafts)
+        // setCrafts(manyCrafts)
       });
   }, []);
 
@@ -31,37 +33,50 @@ function App() {
     setCategories(newCategories);
   };
 
+  const handleDeleteCraft = (deletedCraft) => {
 
-  //// ooops added a category toooo
-  const handleDeleteCraft = (category, deletedCraft) => {
-    // map through certain category to find craft with the deletedcraft id
-    const updatedCrafts = category.crafts.filter(
-      (craft) => craft.id != deletedCraft.id
-    );
-    const updatedCategories = categories.map((cat) => {
-      if (cat.id === category.id) {
-        updateCategory.crafts = updatedCrafts
-        return updatedCategory;
-      } else {
-        return category;
-      }
-    });
+    const selectedCategory = categories.find((c) => c.id == deletedCraft.category_id)
+    const newCraftList = selectedCategory.crafts.filter((craft) => craft.id !== deletedCraft.id)
+    const updatedCategory = {...selectedCategory, crafts: newCraftList}
+    const updatedCategories = categories.map((category) =>
+    category.id === updatedCategory.id ? updatedCategory : category
+  );
+    setCategories(updatedCategories)
   };
 
   const handleAddCategory = (newCategory) => {
     setCategories([...categories, newCategory]);
   };
 
-  // function handleAddCraft(updatedCategory) {
-  //   const updatedCategories = categories.map((category) => {
-  //     if (category.id === updatedCategory.id) {
-  //       return updatedCategory;
-  //     } else {
-  //       return category;
-  //     }
-  //   });
-  //   setCategories(updatedCategories);
-  // }
+  const onAddCraft = (newCraft) => {
+    const selectedCategory = categories.find(
+      (c) => c.id === newCraft.category_id
+    );
+    const updatedCrafts = [...selectedCategory.crafts, newCraft];
+    const updatedCategory = { ...selectedCategory, crafts: updatedCrafts };
+    const updatedCategories = categories.map((category) =>
+      category.id === updatedCategory.id ? updatedCategory : category
+    );
+    // const updatedCategories = categories.map((category) => {
+    //   if (category.id === updatedCategory.id) {
+    //     return updatedCategory;
+    //   } else {
+    //     return category;
+    //   }
+    // });
+    setCategories(updatedCategories);
+  };
+
+  const onEditCraft = (editedCraft) => {
+    const   oneCategory = categories.find((c) => c.id == editedCraft.category_id)
+    const updatedCraftList = oneCategory.crafts.map((craft) => craft.id == editedCraft.id ? editedCraft : craft)
+    const updatedCategory = {...oneCategory, crafts: updatedCraftList}
+    const updatedCategories = categories.map((category) =>
+      category.id == updatedCategory.id ? updatedCategory : category
+    );
+    setCategories(updatedCategories)
+ 
+  }
 
   const handleEditCategory = (editedCategory) => {
     const updatedCategories = categories.map((category) => {
@@ -108,23 +123,25 @@ function App() {
 
         <Route
           path="/categories/:category_id/crafts/:id"
-          element={<CraftDetails categories={categories} onDeleteCraft={handleDeleteCraft} />}
+          element={
+            <CraftDetails
+              categories={categories}
+              onDeleteCraft={handleDeleteCraft}
+            />
+          }
         />
 
         <Route
           path="/categories/:id/new"
           element={
-            <NewCraftForm
-              categories={categories}
-              onAddCategory={handleAddCategory}
-            />
+            <NewCraftForm categories={categories} onAddCraft={onAddCraft} />
           }
         />
 
         {/* Not working :( */}
         <Route
           path="/categories/:category_id/crafts/:id/edit"
-          element={<EditCraft categories={categories} />}
+          element={<EditCraft categories={categories} onEditCraft={onEditCraft} />}
         />
       </Routes>
     </>

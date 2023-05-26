@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const NewCraftForm = ({ categories, onAddCategory }) => {
+const NewCraftForm = ({ categories, onAddCraft, crafts }) => {
   const params = useParams();
   const navigate = useNavigate();
 
@@ -12,12 +12,13 @@ const NewCraftForm = ({ categories, onAddCategory }) => {
   });
 
   useEffect(() => {
+
     const cat = categories.find((c) => c.id == params.id);
 
     if (cat) {
       setCategory(cat);
-    }
-  }, [categories, category]);
+    }}
+  , [categories, category, crafts]);
 
   const [craft, setCraft] = useState({
     name: "",
@@ -59,7 +60,8 @@ const NewCraftForm = ({ categories, onAddCategory }) => {
       .then((data) => {
         //   onAddCraft()
         console.log("New Craft data", data);
-        onAddCategory(category);
+        onAddCraft(data);
+        console.log("crafts", crafts)
         navigate(`/categories/${params.id}`);
       });
   };

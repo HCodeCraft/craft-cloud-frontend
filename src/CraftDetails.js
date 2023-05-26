@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 
-const CraftDetails = ({ categories, onDeleteCraft }) => {
+const CraftDetails = ({ categories, onDeleteCraft}) => {
   const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,7 +30,7 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
       method: "DELETE",
     })
     .then(() => {
-      onDeleteCraft(id);
+      onDeleteCraft(craft);
       navigate(`/categories/${params.category_id}`);
     });
   };
@@ -57,9 +57,9 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
           </Link>
           <br />
           <div className="sidebtn, btn">
-            {/* <Link to={editUrl}> */}
+
               <button onClick={() => navigate(`edit`)}>Edit Craft</button>
-            {/* </Link> */}
+
             <button onClick={() => handleDelete(id)}>Delete Craft</button>
           </div>
         </div>
