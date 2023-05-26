@@ -59,6 +59,7 @@ const EditCraft = ({ categories, onEditCraft }) => {
       description: craft.description,
       notes: craft.notes,
       completed: false,
+      link: craft.link,
       category_id: parseInt(params.category_id),
     };
 console.log("editedCraft", editedCraft)

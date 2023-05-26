@@ -46,6 +46,7 @@ const NewCraftForm = ({ categories, onAddCraft, crafts }) => {
       description: craft.description,
       notes: craft.notes,
       completed: false,
+      link: craft.link,
       category_id: params.id,
     };
 

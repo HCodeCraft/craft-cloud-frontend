@@ -1,35 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 
-const CraftDetails = ({ categories, onDeleteCraft}) => {
+const CraftDetails = ({ categories, onDeleteCraft }) => {
   const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
 
-// Path: "/categories/:category_id/crafts/:id"
-  const category = categories.find((c) => c.id == params.category_id);
 
-  const craft = category.crafts.find((c) => c.id == params.id)
+  const [craft, setCraft] = useState({
+    name: "",
+    image: "",
+    difficulty: "",
+    description: "",
+    notes: "",
+    link: "",
+    completed: false,
+  });
 
+  let hearts;
+    let id;
 
-  const id = category.id;
+  useEffect(() => {
+    const category = categories.find((c) => c.id == params.category_id);
 
-  console.log("location", location)
-
-
- let hearts =
-    craft.difficulty === "easy"
+    if (category) {
+    const selectedCraft = category.crafts.find((c) => c.id == params.id);
+    let hearts =
+      craft.difficulty === "easy"
         ? (hearts = "💚")
         : craft.difficulty === "medium"
         ? (hearts = "🧡🧡")
-        : (hearts = "❤️❤️❤️")
-  
+        : (hearts = "❤️❤️❤️");
+
+    let id = category.id;
+
+    setCraft(selectedCraft);
+ } }, [categories]);
+
+ console.log("craft", craft)
+ console.log("craft.link", craft.link)
+
 
   const handleDelete = (id) => {
     fetch(`http://localhost:9292/crafts/${craft.id}`, {
       method: "DELETE",
-    })
-    .then(() => {
+    }).then(() => {
       onDeleteCraft(craft);
       navigate(`/categories/${params.category_id}`);
     });
@@ -57,8 +72,7 @@ const CraftDetails = ({ categories, onDeleteCraft}) => {
           </Link>
           <br />
           <div className="sidebtn, btn">
-
-              <button onClick={() => navigate(`edit`)}>Edit Craft</button>
+            <button onClick={() => navigate(`edit`)}>Edit Craft</button>
 
             <button onClick={() => handleDelete(id)}>Delete Craft</button>
           </div>
@@ -67,7 +81,7 @@ const CraftDetails = ({ categories, onDeleteCraft}) => {
         <div className="text"></div>
         <br />
         <br />
-      </div>{" "}
+      </div>
       <h4>Difficulty:</h4>
       <p> 💚 Easy, 🧡🧡 Medium, ❤️❤️❤️ Hard </p>
     </div>
