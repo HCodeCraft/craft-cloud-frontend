@@ -57,13 +57,6 @@ function App() {
     const updatedCategories = categories.map((category) =>
       category.id === updatedCategory.id ? updatedCategory : category
     );
-    // const updatedCategories = categories.map((category) => {
-    //   if (category.id === updatedCategory.id) {
-    //     return updatedCategory;
-    //   } else {
-    //     return category;
-    //   }
-    // });
     setCategories(updatedCategories);
   };
 

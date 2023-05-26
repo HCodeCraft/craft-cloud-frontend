@@ -34,7 +34,7 @@ const NewCategoryForm = ({ onAddCategory }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        onAddCategory();
+        onAddCategory(data);
         //  showAllYarns();
         console.log("Form submit data", data);
         navigate("/categories");
