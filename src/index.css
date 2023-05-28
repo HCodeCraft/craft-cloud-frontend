@@ -17,6 +17,12 @@ code {
   display:flex;
   flex-direction: column;
   justify-content: center;
+
+  
+}
+
+.detailbox div{
+  justify-content: flex-start;
 }
 
 .flex-div {
@@ -36,7 +42,7 @@ h4 {
 }
 
 .projectbtn {
-  align-content: end;
+  align-content:start;
   color:#DFA67B;
   font-size:large;
 }
@@ -44,4 +50,8 @@ h4 {
 .craftformpic {
   max-width: 500px;
   max-height: 500px;
+}
+
+.newbtn {
+  align-content: flex-start;
 }
