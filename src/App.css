@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.top {
+  background-color: #DFA67B;
+  height: 310px;
+}
+
 body {
   /* background-color: #7b872d */
   background-color: #FFF2CC;
@@ -25,6 +30,7 @@ body {
 .banner {
   justify-content: center;
   display: flex;
+  
 }
 
 .welcome {
