@@ -29,7 +29,7 @@ if (cat){
     />
 ));
 
-  return ( <div>{ (categories) ? categoryList : <h2>Loading...</h2> }</div> )
+  return ( <div className="category-container">{ (categories) ? categoryList : <h2>Loading...</h2> }</div> )
 };
 
 export default Categories;

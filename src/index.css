@@ -15,7 +15,7 @@ code {
 
 .detailbox {
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
 
   
@@ -23,6 +23,7 @@ code {
 
 .detailbox div{
   justify-content: flex-start;
+  flex-direction: row;
 }
 
 .flex-div {
@@ -33,6 +34,17 @@ code {
   display:flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.craft-container {
+  justify-content: center;
+  display:flex
+}
+
+.category-container {
+  justify-content:center;
+  display:flex ;
+  flex-wrap: wrap;
 }
 
 h4 {
