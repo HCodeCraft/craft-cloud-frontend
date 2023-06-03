@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar";
-import "./App.css";
-import "./Card.css";
+import "./app.css";
 import Home from "./Home";
 import Categories from "./Categories";
 import NewCategoryForm from "./NewCategoryForm";
@@ -20,8 +19,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
-        // const manyCrafts = data.flatMap((c) => c.crafts)
-        // setCrafts(manyCrafts)
       });
   }, []);
 
@@ -34,14 +31,17 @@ function App() {
   };
 
   const handleDeleteCraft = (deletedCraft) => {
-
-    const selectedCategory = categories.find((c) => c.id == deletedCraft.category_id)
-    const newCraftList = selectedCategory.crafts.filter((craft) => craft.id !== deletedCraft.id)
-    const updatedCategory = {...selectedCategory, crafts: newCraftList}
+    const selectedCategory = categories.find(
+      (c) => c.id == deletedCraft.category_id
+    );
+    const newCraftList = selectedCategory.crafts.filter(
+      (craft) => craft.id !== deletedCraft.id
+    );
+    const updatedCategory = { ...selectedCategory, crafts: newCraftList };
     const updatedCategories = categories.map((category) =>
-    category.id === updatedCategory.id ? updatedCategory : category
-  );
-    setCategories(updatedCategories)
+      category.id === updatedCategory.id ? updatedCategory : category
+    );
+    setCategories(updatedCategories);
   };
 
   const handleAddCategory = (newCategory) => {
@@ -61,15 +61,16 @@ function App() {
   };
 
   const onEditCraft = (editedCraft) => {
-    const   oneCategory = categories.find((c) => c.id == editedCraft.category_id)
-    const updatedCraftList = oneCategory.crafts.map((craft) => craft.id == editedCraft.id ? editedCraft : craft)
-    const updatedCategory = {...oneCategory, crafts: updatedCraftList}
+    const oneCategory = categories.find((c) => c.id == editedCraft.category_id);
+    const updatedCraftList = oneCategory.crafts.map((craft) =>
+      craft.id == editedCraft.id ? editedCraft : craft
+    );
+    const updatedCategory = { ...oneCategory, crafts: updatedCraftList };
     const updatedCategories = categories.map((category) =>
       category.id == updatedCategory.id ? updatedCategory : category
     );
-    setCategories(updatedCategories)
- 
-  }
+    setCategories(updatedCategories);
+  };
 
   const handleEditCategory = (editedCategory) => {
     const updatedCategories = categories.map((category) => {
@@ -130,11 +131,11 @@ function App() {
             <NewCraftForm categories={categories} onAddCraft={onAddCraft} />
           }
         />
-
-        {/* Not working :( */}
         <Route
           path="/categories/:category_id/crafts/:id/edit"
-          element={<EditCraft categories={categories} onEditCraft={onEditCraft} />}
+          element={
+            <EditCraft categories={categories} onEditCraft={onEditCraft} />
+          }
         />
       </Routes>
     </>

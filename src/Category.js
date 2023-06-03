@@ -21,11 +21,7 @@ const Category = ({ name, image, description, id, category }) => {
 
         <div className="btn">
           <Link
-            to={{
-              pathname: `/categories/${id}`,
-              state: { category: category },
-            }}
-          >
+            to={`/categories/${id}`}>
             <button>Show Craft Projects</button>
           </Link>
           <br />

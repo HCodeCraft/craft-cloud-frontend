@@ -24,7 +24,6 @@ const CategoryDetails = ({ categories, onRemoveCategory }) => {
   }, [categories]);
 
   const handleDeleteClick = (deletedCategory) => {
-    console.log("id from in handledeleteclick", deletedCategory.id);
     fetch(`http://localhost:9292/categories/${deletedCategory.id}`, {
       method: "DELETE",
     })

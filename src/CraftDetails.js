@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 const CraftDetails = ({ categories, onDeleteCraft }) => {
   const params = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
+ 
 
   const [craft, setCraft] = useState({
     name: "",
@@ -24,8 +24,6 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
 
     if (category) {
       const selectedCraft = category.crafts.find((c) => c.id == params.id);
-
-      let id = category.id;
 
       setCraft(selectedCraft);
     }
@@ -58,22 +56,22 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
       <div className="content">
         <img id="yarnpic" src={craft.image} alt="category" />
       </div>
-     
+
+      <br />
+      <div id="craftdetailbox" className="text">
+        <h3>{hearts}</h3>
         <br />
-        <div id="craftdetailbox" className='text'>
-          <h3>{hearts}</h3>
-          <br />
-          <h3>Completed: {craft.completed === true ? "Yes 🎉" : "No"}</h3>
-          <br />
-          <p> {craft.description}</p>
-          <br />
-          <p>Notes: {craft.notes}</p>
-          <br />
-          <Link to={craft.link} className="text">
-            Directions/Reference
-          </Link>
-          <br />
-          <div>
+        <h3>Completed: {craft.completed === true ? "Yes 🎉" : "No"}</h3>
+        <br />
+        <p> {craft.description}</p>
+        <br />
+        <p>Notes: {craft.notes}</p>
+        <br />
+        <Link to={craft.link} className="text">
+          Directions/Reference
+        </Link>
+        <br />
+        <div>
           <div className="sidebtn, btn">
             <button onClick={() => navigate(`edit`)}>Edit Craft</button>
 
@@ -85,9 +83,10 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
         <br />
         <br />
       </div>
-      <div className='text'>
-          <h4>Difficulty:</h4>
-          <p> 💚 Easy,</p><p>🧡🧡 Medium,</p> <p>❤️❤️❤️ Hard </p>
+      <div className="text">
+        <h4>Difficulty:</h4>
+        <p> 💚 Easy,</p>
+        <p>🧡🧡 Medium,</p> <p>❤️❤️❤️ Hard </p>
       </div>
     </div>
   );
