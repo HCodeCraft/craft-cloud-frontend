@@ -12,7 +12,7 @@ const CraftCard = ({ craft }) => {
   return (
     <div className="card-container">
       <div className="image-container">
-        <img src={craft.image} alt="" />
+        <img src={craft.image} alt=""/>
       </div>
       <div className="card-content">
         <div className="card-title">

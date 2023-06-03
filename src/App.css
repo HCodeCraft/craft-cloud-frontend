@@ -3,8 +3,9 @@
 }
 
 .top {
-  background-color: #DFA67B;
+   background: linear-gradient(#DFA67B, #FFF2CC);
   height: 310px;
+
 }
 
 body {

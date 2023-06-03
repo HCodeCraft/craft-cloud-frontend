@@ -3,7 +3,7 @@
   .card-container {
     box-sizing: border-box;
     margin: 2%;
-    float: left;
+    /* float: left; */
     text-align: center;
     width: 300px;
     min-height: 420px;
@@ -13,7 +13,7 @@
     animation: ease-in;
     color: black;
     align-items: center;
-    display: inline;
+    display: inline-block;
     background-color: #FFF2CC;
   }
   
