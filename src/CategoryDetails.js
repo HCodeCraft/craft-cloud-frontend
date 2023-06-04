@@ -64,8 +64,8 @@ const CategoryDetails = ({ categories, onRemoveCategory }) => {
         <div className={"detailbox"}>
           <h3>Difficulty:</h3>
           <br />
-          <p> 💚 Easy,</p>
-          <p>🧡🧡 Medium,</p> <p>❤️❤️❤️ Hard </p>
+          <p> <span role="img" alt="green heart">💚</span> Easy,</p>
+          <p><span role="img" alt="two orange hearts">🧡🧡</span> Medium,</p> <p><span role="img" alt="three red hearts">❤️❤️❤️ </span> Hard </p>
           <div className="btn" id="newbtn">
             <Link to={`new`}>
               <button className="btn" id="projectbtn">
