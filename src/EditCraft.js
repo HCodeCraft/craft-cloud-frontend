@@ -62,7 +62,7 @@ const [clicked, setClicked] = useState(false)
       link: craft.link,
       category_id: parseInt(params.category_id),
     };
-console.log("editedCraft", editedCraft)
+
     fetch(`http://localhost:9292/crafts/${id}`, {
       method: "PATCH",
       headers: {

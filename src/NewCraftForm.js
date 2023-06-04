@@ -84,9 +84,9 @@ const NewCraftForm = ({ categories, onAddCraft, crafts }) => {
         <label>Difficulty:</label>
         <select onChange={handleChange} name="difficulty">
           <option value=""> </option>
-          <option value="easy">Easy 💚 </option>
-          <option value="medium">Medium 🧡🧡</option>
-          <option value="hard">Hard ❤️❤️❤️</option>
+          <option value="easy">Easy  <span role="img" alt="a green heart">💚 </span></option>
+          <option value="medium">Medium  <span role="img" alt="two orange hearts">🧡🧡</span></option>
+          <option value="hard">Hard  <span role="img" alt="three red hearts">❤️❤️❤️</span></option>
         </select>
         <br />
         <br />

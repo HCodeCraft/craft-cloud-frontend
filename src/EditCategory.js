@@ -45,7 +45,6 @@ const EditCategory = ({ categories, onEditCategory }) => {
             description: "",
             crafts:[]
           })
-        console.log("Form submit data", data);
         navigate(`/categories/${selectedCategory.id}`);
       });
   };
@@ -67,7 +66,7 @@ const EditCategory = ({ categories, onEditCategory }) => {
           onChange={handleChange}
           type="text"
           value={category.name}
-        />{" "}
+        />
         <br />
         <br />
         <label>Image url:</label>
@@ -76,7 +75,7 @@ const EditCategory = ({ categories, onEditCategory }) => {
           onChange={handleChange}
           type="text"
           value={category.image}
-        />{" "}
+        />
         <br />
         <br />
         <label>Description:</label>
@@ -86,7 +85,7 @@ const EditCategory = ({ categories, onEditCategory }) => {
           name="description"
           onChange={handleChange}
           value={category.description}
-        />{" "}
+        />
         <br />
         <br />
         <input type="submit" />
