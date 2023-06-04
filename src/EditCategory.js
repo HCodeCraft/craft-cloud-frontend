@@ -51,7 +51,7 @@ const EditCategory = ({ categories, onEditCategory }) => {
   };
 
   return (
-    <div className="yarnform">
+    <div className="craftform">
       <br />
       <div className="title">
         <h1>Edit the {selectedCategory.name} Category</h1>

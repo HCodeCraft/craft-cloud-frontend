@@ -3,21 +3,6 @@ import Category from "./Category";
 
 const Categories = ({ categories }) => {
 
-//   const [cat, setCat] = useState([{
-//     name:"",
-//     image:"",
-//     description:"",
-//     id:""
-//   }])
-
-
-//   useEffect(() => {
-// if (cat){
-//   setCat(categories)
-// }
-//   }, [categories])
-
-
 
   const categoryList = categories.map((category) => (
     <Category

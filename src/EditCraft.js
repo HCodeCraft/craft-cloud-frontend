@@ -85,7 +85,7 @@ console.log("editedCraft", editedCraft)
   };
 
   return (
-    <div className="yarnform">
+    <div className="craftform">
       <br />
       <div className="title">
         <h1>Edit {craft.name}</h1>

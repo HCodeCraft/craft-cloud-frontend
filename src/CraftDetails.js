@@ -37,7 +37,7 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
       ? (hearts = "🧡🧡")
       : (hearts = "❤️❤️❤️");
 
-  const handleDelete = (id) => {
+  const handleDelete = () => {
     fetch(`http://localhost:9292/crafts/${craft.id}`, {
       method: "DELETE",
     }).then(() => {

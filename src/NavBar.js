@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Banner from "./Directory/cloudban.jpg";
-import Categories from "./Categories";
-import NewCategoryForm from "./NewCategoryForm";
 
 const linkStyles = {
   display: "inline-block",

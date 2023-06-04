@@ -35,14 +35,12 @@ const NewCategoryForm = ({ onAddCategory }) => {
       .then((res) => res.json())
       .then((data) => {
         onAddCategory(data);
-        //  showAllYarns();
-        console.log("Form submit data", data);
         navigate("/categories");
       });
   };
 
   return (
-    <div className="yarnform">
+    <div className="craftform">
       <br />
       <div className="title">
         <h1>Add a Category</h1>

@@ -59,16 +59,13 @@ const NewCraftForm = ({ categories, onAddCraft, crafts }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        //   onAddCraft()
-        console.log("New Craft data", data);
         onAddCraft(data);
-        console.log("crafts", crafts)
         navigate(`/categories/${params.id}`);
       });
   };
 
   return (
-    <div className="yarnform">
+    <div className="craftform">
       <br />
       <div className="title">
         <h1>Add a {category.name} Craft</h1>

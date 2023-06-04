@@ -3,14 +3,13 @@
 }
 
 .top {
-   background: linear-gradient(#DFA67B, #FFF2CC);
+  background: linear-gradient(#dfa67b, #fff2cc);
   height: 310px;
-
 }
 
 body {
   /* background-color: #7b872d */
-  background-color: #FFF2CC;
+  background-color: #fff2cc;
   color: black;
 }
 
@@ -31,7 +30,6 @@ body {
 .banner {
   justify-content: center;
   display: flex;
-  
 }
 
 .welcome {
@@ -46,7 +44,7 @@ body {
   display: flex;
 }
 
-.yarnform {
+.craftform {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -136,7 +134,6 @@ button {
 select {
   width: 130px;
   height: 30px;
-
 }
 
 .top-bar {
@@ -157,8 +154,6 @@ button {
   margin: 10px;
 }
 
-
-  
 .card-container {
   box-sizing: border-box;
   margin: 2%;
@@ -167,13 +162,13 @@ button {
   width: 300px;
   min-height: 420px;
   overflow: hidden;
-  box-shadow: 0px 0px 15px 5px #F4B183;
+  box-shadow: 0px 0px 15px 5px #f4b183;
   transition: 0.3s;
   animation: ease-in;
   color: black;
   align-items: center;
   display: inline-block;
-  background-color: #FFF2CC;
+  background-color: #fff2cc;
 }
 
 .card-container:hover {
@@ -221,7 +216,7 @@ p {
 
 .btn button {
   padding: 0rem;
-  background-color: #DFA67B;
+  background-color: #dfa67b;
   border: none;
   transition: 0.2s;
   margin-bottom: 0.5rem;
@@ -234,9 +229,9 @@ p {
   transform: scale (1.1);
 }
 
-.sidebtn{
+.sidebtn {
   padding: 0rem;
-  background-color: #DFA67B;
+  background-color: #dfa67b;
   border: none;
   transition: 0.2s;
   margin-bottom: 0.5rem;
@@ -258,7 +253,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
@@ -267,49 +261,47 @@ code {
 }
 
 .detailbox {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
-
-  
 }
 
-.detailbox div{
+.detailbox div {
   justify-content: flex-start;
   flex-direction: row;
 }
 
 .flex-div {
-  display:flex;
+  display: flex;
 }
 
 #craftdetailbox {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .craft-container {
   justify-content: center;
-  display:flex
+  display: flex;
 }
 
 .category-container {
-  justify-content:center;
-  display:flex ;
+  justify-content: center;
+  display: flex;
   flex-wrap: wrap;
 }
 
 h4 {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
 }
 
 .projectbtn {
-  align-content:start;
-  color:#DFA67B;
-  font-size:large;
+  align-content: start;
+  color: #dfa67b;
+  font-size: large;
 }
 
 .craftformpic {
