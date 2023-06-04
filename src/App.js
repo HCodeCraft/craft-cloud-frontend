@@ -23,7 +23,6 @@ function App() {
   }, []);
 
   const handleDeleteCategory = (deletedCategory) => {
-    console.log("id from in handleDelete", deletedCategory.id);
     const newCategories = categories.filter(
       (category) => category.id != deletedCategory.id
     );
