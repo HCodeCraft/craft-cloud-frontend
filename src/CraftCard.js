@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const CraftCard = ({ craft }) => {
   let hearts =
     craft.difficulty === "easy"
-      ? (hearts = "💚")
+      ? (hearts = <span role="img" alt="green heart">💚</span>)
       : craft.difficulty === "medium"
-      ? (hearts = "🧡🧡")
-      : (hearts = "❤️❤️❤️");
+      ? (hearts = <span role="img" alt="two orange hearts">🧡🧡</span>)
+      : (hearts = <span role="img" alt="three red hearts">❤️❤️❤️</span>);
 
   return (
     <div className="card-container">
