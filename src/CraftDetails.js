@@ -4,7 +4,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 const CraftDetails = ({ categories, onDeleteCraft }) => {
   const params = useParams();
   const navigate = useNavigate();
- 
 
   const [craft, setCraft] = useState({
     name: "",
@@ -29,13 +28,24 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
     }
   }, [categories]);
 
-
   hearts =
     craft.difficulty === "easy"
-      ? (hearts = "💚")
+      ? (hearts = (
+          <span role="img" alt="green heart">
+            💚
+          </span>
+        ))
       : craft.difficulty === "medium"
-      ? (hearts = "🧡🧡")
-      : (hearts = "❤️❤️❤️");
+      ? (hearts = (
+          <span role="img" alt="two orange hearts">
+            🧡🧡
+          </span>
+        ))
+      : (hearts = (
+          <span role="img" alt="three red hearts">
+            ❤️❤️❤️
+          </span>
+        ));
 
   const handleDelete = () => {
     fetch(`http://localhost:9292/crafts/${craft.id}`, {
@@ -45,10 +55,6 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
       navigate(`/categories/${params.category_id}`);
     });
   };
-
-  console.log("craft.completed", craft.completed);
-
-  console.log("hearts", hearts);
 
   return (
     <div>
@@ -85,8 +91,24 @@ const CraftDetails = ({ categories, onDeleteCraft }) => {
       </div>
       <div className="text">
         <h4>Difficulty:</h4>
-        <p> 💚 Easy,</p>
-        <p>🧡🧡 Medium,</p> <p>❤️❤️❤️ Hard </p>
+        <p>
+          <span role="img" alt="green heart">
+            💚
+          </span>
+          Easy,
+        </p>
+        <p>
+          <span role="img" alt="two orange hearts">
+            🧡🧡
+          </span>
+          Medium,
+        </p>
+        <p>
+          <span role="img" alt="three red hearts">
+            ❤️❤️❤️
+          </span>
+          Hard
+        </p>
       </div>
     </div>
   );
