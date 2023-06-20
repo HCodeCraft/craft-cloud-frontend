@@ -71,7 +71,7 @@ const NewCraftForm = ({ categories, onAddCraft, crafts }) => {
         <h1>Add a {category.name} Craft</h1>
       </div>
       <br />
-      <img className="craftformpic" src={category.image} />
+      <img className="craftformpic" src={category.image} alt="given category" />
       <br />
       <br />
       <form onSubmit={handleSubmit}>
